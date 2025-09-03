@@ -3,120 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Aqeel Ahmed, PhD — physicist, quantitative modeler and data & analytics enthusiast. CV, publications and contact links.">
   <title>Aqeel Ahmed, PhD</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; }
+    a { color: #003366; }
     header { background: #003366; color: #fff; padding: 30px 20px; text-align: center; }
     header h1 { margin: 0; font-size: 2em; }
     header p { margin: 5px 0; }
+    header a { color: #fff; } /* email link color */
     nav { background: #f4f4f4; padding: 10px; text-align: center; }
     nav a { margin: 0 15px; text-decoration: none; color: #003366; font-weight: bold; }
+    nav a:focus { outline: 3px solid #ffbf47; outline-offset: 2px; }
     section { padding: 20px; max-width: 900px; margin: auto; }
+    main { padding-bottom: 30px; }
     h2 { border-bottom: 2px solid #003366; padding-bottom: 5px; margin-top: 40px; }
     ul { list-style: none; padding: 0; }
     li { margin-bottom: 8px; }
     footer { background: #003366; color: #fff; text-align: center; padding: 15px; margin-top: 30px; }
     .links a { display: inline-block; margin: 5px 10px; color: #003366; text-decoration: none; }
     .links a:hover { text-decoration: underline; }
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      left: 10px;
+      top: 10px;
+      background: #fff;
+      color: #003366;
+      padding: 8px;
+      z-index: 1000;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Aqeel Ahmed, PhD</h1>
-  <p>Physicist • Quantitative Modeler • Data & Analytics Enthusiast</p>
-  <p>Email: <a href="mailto:aqeelhmed@gmail.com" style="color:white;">aqeelhmed@gmail.com</a></p>
-</header>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#experience">Experience</a>
-  <a href="#education">Education</a>
-  <a href="#publications">Publications</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <header>
+    <h1>Aqeel Ahmed, PhD</h1>
+    <p>Physicist • Quantitative Modeler • Data & Analytics Enthusiast</p>
+    <p>Email: <a href="mailto:aqeelhmed@gmail.com">aqeelhmed@gmail.com</a></p>
+  </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>I am a PhD physicist with expertise in analytical problem-solving, quantitative modeling, and computational methods. 
-     I have led analytical model building and complex data-driven projects, programmed in Python and C/C++, 
-     and collaborated with international teams. I am looking to apply scientific rigor and technical proficiency 
-     in data-intensive and analytical roles.</p>
-</section>
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <ul>
-    <li><strong>Programming:</strong> Python, C/C++, Wolfram Mathematica, Fortran</li>
-    <li><strong>Data Science:</strong> Scikit-learn, PyTorch</li>
-    <li><strong>Tools:</strong> Git, Linux, LaTeX, Jupyter, Docker, SQL</li>
-    <li><strong>Soft Skills:</strong> Project Management, Communication, Critical Thinking, Team Collaboration</li>
-    <li><strong>Languages:</strong> English (Fluent), German (Intermediate, B1)</li>
-  </ul>
-</section>
+  <main id="main">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am a PhD physicist with expertise in analytical problem-solving, quantitative modeling, and computational methods. 
+         I have led analytical model building and complex data-driven projects, programmed in Python and C/C++, 
+         and collaborated with international teams. I am looking to apply scientific rigor and technical proficiency 
+         in data-intensive and analytical roles.</p>
+    </section>
 
-<section id="experience">
-  <h2>Experience</h2>
-  <h3>Postdoctoral Researcher — Max-Planck-Institut für Kernphysik, Heidelberg (2020 – Present)</h3>
-  <ul>
-    <li>Developed complex quantitative models; authored 8 publications.</li>
-    <li>Performed advanced data analysis with Python and Mathematica.</li>
-    <li>Led international teams, mentoring 7 MSc/PhD researchers.</li>
-  </ul>
-  <h3>Postdoctoral Researcher — Vrije Universiteit Brussel (2018 – 2020)</h3>
-  <ul>
-    <li>Built analytical models in theoretical physics; published 5 papers.</li>
-    <li>Designed algorithms in Python, C++, Mathematica, Fortran.</li>
-  </ul>
-  <h3>Postdoctoral Researcher — JGU Mainz (2017 – 2018)</h3>
-  <ul>
-    <li>Developed symbolic/numerical models with Python & Mathematica.</li>
-  </ul>
-  <h3>Research Associate — University of Warsaw (2016 – 2017)</h3>
-  <ul>
-    <li>Performed advanced analytic/numerical modeling; supervised 3 students.</li>
-  </ul>
-  <h3>Research Staff — National Centre for Physics, Islamabad (2009 – 2011)</h3>
-  <ul>
-    <li>Conducted theoretical research and simulations with Mathematica.</li>
-  </ul>
-</section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li><strong>Programming:</strong> Python, C/C++, Wolfram Mathematica, Fortran</li>
+        <li><strong>Data Science:</strong> Scikit-learn, PyTorch</li>
+        <li><strong>Tools:</strong> Git, Linux, LaTeX, Jupyter, Docker, SQL</li>
+        <li><strong>Soft Skills:</strong> Project Management, Communication, Critical Thinking, Team Collaboration</li>
+        <li><strong>Languages:</strong> English (Fluent), German (Intermediate, B1)</li>
+      </ul>
+    </section>
 
-<section id="education">
-  <h2>Education</h2>
-  <ul>
-    <li><strong>PhD Physics</strong>, University of Warsaw (2011 – 2016), Visiting: UC Riverside, UC Davis</li>
-    <li><strong>M.Sc. & M.Phil Physics</strong>, Quaid-i-Azam University, Pakistan (2006 – 2010)</li>
-    <li><strong>B.Sc. Physics & Mathematics</strong>, University of Punjab, Pakistan (2003 – 2005)</li>
-  </ul>
-</section>
+    <section id="experience">
+      <h2>Experience</h2>
+      <h3>Postdoctoral Researcher — Max-Planck-Institut für Kernphysik, Heidelberg (2020 – Present)</h3>
+      <ul>
+        <li>Developed complex quantitative models; authored 8 publications.</li>
+        <li>Performed advanced data analysis with Python and Mathematica.</li>
+        <li>Led international teams, mentoring 7 MSc/PhD researchers.</li>
+      </ul>
+      <h3>Postdoctoral Researcher — Vrije Universiteit Brussel (2018 – 2020)</h3>
+      <ul>
+        <li>Built analytical models in theoretical physics; published 5 papers.</li>
+        <li>Designed algorithms in Python, C++, Mathematica, Fortran.</li>
+      </ul>
+      <h3>Postdoctoral Researcher — JGU Mainz (2017 – 2018)</h3>
+      <ul>
+        <li>Developed symbolic/numerical models with Python & Mathematica.</li>
+      </ul>
+      <h3>Research Associate — University of Warsaw (2016 – 2017)</h3>
+      <ul>
+        <li>Performed advanced analytic/numerical modeling; supervised 3 students.</li>
+      </ul>
+      <h3>Research Staff — National Centre for Physics, Islamabad (2009 – 2011)</h3>
+      <ul>
+        <li>Conducted theoretical research and simulations with Mathematica.</li>
+      </ul>
+    </section>
 
-<section id="publications">
-  <h2>Selected Publications</h2>
-  <ul>
-    <li>A. Ahmed, M. Lindner, P. Saake, <i>Conformal little Higgs models</i>, Phys. Rev. D 109 (2024).</li>
-    <li>A. Ahmed, B. Grzadkowski, A. Socha, <i>Higgs boson induced reheating and ultraviolet dark matter</i>, JHEP 02 (2023).</li>
-    <li>A. Ahmed, B. Grzadkowski, A. Socha, <i>Gravitational production of vector dark matter</i>, JHEP 08 (2020).</li>
-    <li>See full list at <a href="https://inspirehep.net/authors/1091402">INSPIRE</a>.</li>
-  </ul>
-</section>
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li><strong>PhD Physics</strong>, University of Warsaw (2011 – 2016), Visiting: UC Riverside, UC Davis</li>
+        <li><strong>M.Sc. & M.Phil Physics</strong>, Quaid-i-Azam University, Pakistan (2006 – 2010)</li>
+        <li><strong>B.Sc. Physics & Mathematics</strong>, University of Punjab, Pakistan (2003 – 2005)</li>
+      </ul>
+    </section>
 
-<section id="contact">
-  <h2>Contact & Links</h2>
-  <div class="links">
-    <a href="mailto:aqeelhmed@gmail.com">Email</a> |
-    <a href="https://linkedin.com/in/aqeelhmed">LinkedIn</a> |
-    <a href="https://scholar.google.com/citations?user=pVXTbXYAAAAJ">Google Scholar</a> |
-    <a href="https://inspirehep.net/authors/1091402">Publications</a> |
-    <a href="https://orcid.org/0000-0002-2907-2433">ORCiD</a> |
-    <a href="https://github.com/aqeelhmed">GitHub</a>
-  </div>
-</section>
+    <section id="publications">
+      <h2>Selected Publications</h2>
+      <ul>
+        <li>A. Ahmed, M. Lindner, P. Saake, <i>Conformal little Higgs models</i>, Phys. Rev. D 109 (2024).</li>
+        <li>A. Ahmed, B. Grzadkowski, A. Socha, <i>Higgs boson induced reheating and ultraviolet dark matter</i>, JHEP 02 (2023).</li>
+        <li>A. Ahmed, B. Grzadkowski, A. Socha, <i>Gravitational production of vector dark matter</i>, JHEP 08 (2020).</li>
+        <li>See full list at <a href="https://inspirehep.net/authors/1091402" target="_blank" rel="noopener noreferrer">INSPIRE</a>.</li>
+      </ul>
+    </section>
 
-<footer>
-  <p>&copy; 2025 Aqeel Ahmed. All rights reserved.</p>
-</footer>
+    <section id="contact">
+      <h2>Contact & Links</h2>
+      <div class="links">
+        <a href="mailto:aqeelhmed@gmail.com">Email</a> |
+        <a href="https://linkedin.com/in/aqeelhmed" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+        <a href="https://scholar.google.com/citations?user=pVXTbXYAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a> |
+        <a href="https://inspirehep.net/authors/1091402" target="_blank" rel="noopener noreferrer">Publications</a> |
+        <a href="https://orcid.org/0000-0002-2907-2433" target="_blank" rel="noopener noreferrer">ORCiD</a> |
+        <a href="https://github.com/aqeelhmed" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Aqeel Ahmed. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
