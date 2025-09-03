@@ -142,8 +142,21 @@
     .card ul { margin:0; padding:0; list-style: none; }
     .card li { margin: 10px 0; color: var(--muted); line-height:1.5; }
 
-    /* Right column: quick contact & skills */
-    aside .card { position: sticky; top: 20px; }
+    /* Right column: quick contact & skills
+       NOTE: We no longer make every card individually sticky.
+       Instead we wrap the right-column content in .aside-inner and make
+       that wrapper sticky. This avoids multiple stacked sticky elements
+       that don't release properly when scrolling. */
+    aside .card { position: static; }
+
+    .aside-inner {
+      position: sticky;
+      top: 20px;
+      align-self: start;          /* ensures the wrapper sticks within the grid column */
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
     .skill-pill {
       display:inline-block;
@@ -163,7 +176,7 @@
 
     /* Contact links */
     .links { display:flex; flex-direction:column; gap:8px; }
-    .links a { display:inline-flex; align-items:center; gap:10px; color:var(--text); padding:8px 10px; border-radius:8px; background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid rgba(255,255,255,0.02); }
+    .links a { display:inline-flex; align-items:center; gap:10px; color:var(--text); padding:8px 10px; border-radius:8px; background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border: 1px solid rgba(255,255,255,0.02); text-decoration: none; }
     .links a small { color:var(--muted); font-size:0.85rem; }
 
     footer {
@@ -178,6 +191,8 @@
       main { grid-template-columns: 1fr; }
       .avatar { width:96px; height:96px; flex:0 0 96px; }
       .wrap { margin: 16px; padding: 12px; }
+      /* On small screens, disable sticky behavior */
+      .aside-inner { position: static; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -191,8 +206,9 @@
   <div class="wrap" role="document">
     <header class="header" role="banner" aria-label="Profile header">
       <div class="avatar" aria-hidden="false">
-        <!-- Add your photo at /photo.jpg (or change the path). This is a placeholder circle. -->
-        <img src="/Ahmed_mainz.jpeg" alt="Aqeel Ahmed — portrait photo placeholder" onerror="this.style.objectFit='cover'; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22124%22 height=%22124%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%2308121a%22/><text x=%2250%25%22 y=%2255%25%22 font-size=%2236%22 fill=%22%237baea0%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 dy=%22.35em%22>AQ</text></svg>';" />
+        <!-- Add your photo at /Ahmed_mainz.jpeg (or change the path). This is a placeholder circle. -->
+        <img src="/Ahmed_mainz.jpeg" alt="Aqeel Ahmed — portrait photo placeholder"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22124%22 height=%22124%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23082033%22/><text x=%2250%25%22 y=%2250%25%22 font-size=%2236%22 fill=%22%23ffffff%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22>A</text></svg>';" />
       </div>
 
       <div class="header-info">
@@ -201,8 +217,6 @@
 
         <div class="ctas" role="group" aria-label="Primary actions">
           <a class="btn" href="/ahmed_cv_2025.pdf" target="_blank" rel="noopener noreferrer" title="Download CV">
-            <!-- document icon (simple) -->
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="rgba(255,255,255,0.95)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="rgba(255,255,255,0.95)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             CV
           </a>
 
@@ -217,8 +231,6 @@
 
         <div class="meta" aria-hidden="false">
           <span>Heidelberg, Germany</span>
-          <!--<span>•</span>
-          <time datetime="2025">Open to remote & hybrid roles</time>-->
         </div>
       </div>
     </header>
@@ -228,7 +240,7 @@
       <div>
         <section class="card" id="about" aria-labelledby="about-heading">
           <h2 id="about-heading">About</h2>
-          <p style="color:var(--muted); margin:0 0 10px 0;">I am a PhD physicist who applies analytical rigor to data-intensive problems. I design and implement quantitative models, lead cross-border collaborations, and translate scientific results into production-ready code and actionable insights.</p>
+          <p style="color:var(--muted); margin:0 0 10px 0;">I am a PhD physicist who applies analytical rigor to data-intensive problems. I design and implement quantitative models, lead cross-border collaborations and deliver reproducible scientific software and analyses.</p>
 
           <h3 style="margin-top:12px; color:var(--text); font-size:0.98rem;">Highlights</h3>
           <ul>
@@ -269,75 +281,77 @@
 
       <!-- Right column -->
       <aside>
-        <div class="card" aria-labelledby="skills-heading">
-          <h2 id="skills-heading">Skills & Tools</h2>
-          <div style="margin-top:8px;">
-            <div class="skill-pill">Python</div>
-            <div class="skill-pill">C / C++</div>
-            <div class="skill-pill">Mathematica</div>
-            <div class="skill-pill">Fortran</div>
-            <div class="skill-pill">PyTorch</div>
-            <div class="skill-pill">Scikit-learn</div>
-            <div class="skill-pill">Docker</div>
-            <div class="skill-pill">SQL</div>
-            <div class="skill-pill">Git</div>
+        <div class="aside-inner">
+          <div class="card" aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Skills & Tools</h2>
+            <div style="margin-top:8px;">
+              <div class="skill-pill">Python</div>
+              <div class="skill-pill">C / C++</div>
+              <div class="skill-pill">Mathematica</div>
+              <div class="skill-pill">Fortran</div>
+              <div class="skill-pill">PyTorch</div>
+              <div class="skill-pill">Scikit-learn</div>
+              <div class="skill-pill">Docker</div>
+              <div class="skill-pill">SQL</div>
+              <div class="skill-pill">Git</div>
+            </div>
           </div>
-        </div>
 
-        <div class="card" style="margin-top:16px;" aria-labelledby="edu-heading">
-          <h2 id="edu-heading">Education</h2>
-          <ul>
-            <li><strong>PhD, Physics</strong> — University of Warsaw (2011–2016)</li>
-            <li><strong>MSc & MPhil, Physics</strong> — Quaid-i-Azam University (2006–2010)</li>
-            <li><strong>BSc, Physics & Mathematics</strong> — University of Punjab (2003–2005)</li>
-          </ul>
-        </div>
+          <div class="card" style="margin-top:0;" aria-labelledby="edu-heading">
+            <h2 id="edu-heading">Education</h2>
+            <ul>
+              <li><strong>PhD, Physics</strong> — University of Warsaw (2011–2016)</li>
+              <li><strong>MSc & MPhil, Physics</strong> — Quaid-i-Azam University (2006–2010)</li>
+              <li><strong>BSc, Physics & Mathematics</strong> — University of Punjab (2003–2005)</li>
+            </ul>
+          </div>
 
-        <div class="card" style="margin-top:16px;" aria-labelledby="contact-heading">
-          <h2 id="contact-heading">Contact & Links</h2>
-          <div class="links" role="list">
-            <a role="listitem" href="mailto:aqeelhmed@gmail.com" title="Email">
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7v10h18V7L12 13 3 7z" fill="rgba(255,255,255,0.85)"/></svg>
-              <div>
-                <div style="font-weight:600;">Email</div>
-                <small>aqeelhmed@gmail.com</small>
-              </div>
-            </a>
+          <div class="card" style="margin-top:0;" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact & Links</h2>
+            <div class="links" role="list">
+              <a role="listitem" href="mailto:aqeelhmed@gmail.com" title="Email">
+                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7v10h18V7L12 13 3 7z" fill="rgba(255,255,255,0.85)"/></svg>
+                <div>
+                  <div style="font-weight:600;">Email</div>
+                  <small>aqeelhmed@gmail.com</small>
+                </div>
+              </a>
 
-            <a role="listitem" href="https://linkedin.com/in/aqeelhmed" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-              <div>
-                <div style="font-weight:600;">LinkedIn</div>
-                <small>linkedin.com/in/aqeelhmed</small>
-              </div>
-            </a>
+              <a role="listitem" href="https://linkedin.com/in/aqeelhmed" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                <div>
+                  <div style="font-weight:600;">LinkedIn</div>
+                  <small>linkedin.com/in/aqeelhmed</small>
+                </div>
+              </a>
 
-            <a role="listitem" href="https://scholar.google.com/citations?user=pVXTbXYAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar">
-              <div>
-                <div style="font-weight:600;">Google Scholar</div>
-                <small>citation profile</small>
-              </div>
-            </a>
+              <a role="listitem" href="https://scholar.google.com/citations?user=pVXTbXYAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar">
+                <div>
+                  <div style="font-weight:600;">Google Scholar</div>
+                  <small>citation profile</small>
+                </div>
+              </a>
 
-            <a role="listitem" href="https://inspirehep.net/authors/1091402" target="_blank" rel="noopener noreferrer" title="INSPIRE">
-              <div>
-                <div style="font-weight:600;">INSPIRE</div>
-                <small>publications</small>
-              </div>
-            </a>
+              <a role="listitem" href="https://inspirehep.net/authors/1091402" target="_blank" rel="noopener noreferrer" title="INSPIRE">
+                <div>
+                  <div style="font-weight:600;">INSPIRE</div>
+                  <small>publications</small>
+                </div>
+              </a>
 
-            <a role="listitem" href="https://github.com/aqeelhmed" target="_blank" rel="noopener noreferrer" title="GitHub">
-              <div>
-                <div style="font-weight:600;">GitHub</div>
-                <small>github.com/aqeelhmed</small>
-              </div>
-            </a>
+              <a role="listitem" href="https://github.com/aqeelhmed" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <div>
+                  <div style="font-weight:600;">GitHub</div>
+                  <small>github.com/aqeelhmed</small>
+                </div>
+              </a>
 
-            <a role="listitem" href="https://orcid.org/0000-0002-2907-2433" target="_blank" rel="noopener noreferrer" title="ORCiD">
-              <div>
-                <div style="font-weight:600;">ORCiD</div>
-                <small>0000-0002-2907-2433</small>
-              </div>
-            </a>
+              <a role="listitem" href="https://orcid.org/0000-0002-2907-2433" target="_blank" rel="noopener noreferrer" title="ORCiD">
+                <div>
+                  <div style="font-weight:600;">ORCiD</div>
+                  <small>0000-0002-2907-2433</small>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </aside>
